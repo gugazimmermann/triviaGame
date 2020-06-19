@@ -1,51 +1,41 @@
 import React from "react";
-import { render, getByText } from "@testing-library/react";
-import Question from "../components/quiz/Question";
+import { render, unmountComponentAtNode } from "react-dom";
+import { act } from "react-dom/test-utils";
+import Quiz from "../pages/quiz/Quiz";
 
-const mockQuestion = {
-  category: "General Knowledge",
-  question:
-    'This is the correct spelling of "Supercalifragilisticexpialidocious".',
-  correct_answer: true,
-  user_answer: null,
-};
-
-const mockCurrent = 2;
-
-const mockFalseButton = jest.fn();
-
-test("Test Render Quiz Component", () => {
-  const { container } = render(
-    <Question
-      question={mockQuestion}
-      current={mockCurrent}
-      handleAnswer={mockFalseButton}
-    />
-  );
-
-  expect(container.querySelector("h1").textContent).toEqual(
-    mockQuestion.category
-  );
-  expect(container.querySelector("h2").textContent).toEqual(
-    mockQuestion.question
-  );
-  expect(container.querySelector("h3").textContent).toEqual(
-    mockCurrent + 1 + " of 10"
-  );
+let container = null;
+beforeEach(() => {
+  container = document.createElement("div");
+  document.body.appendChild(container);
 });
 
-test("Test Click Button Quiz Component", () => {
-  const { container } = render(
-    <Question
-      question={mockQuestion}
-      current={mockCurrent}
-      handleAnswer={mockFalseButton}
-    />
+afterEach(() => {
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
+
+it("renders quiz data", async () => {
+  const fakeUser = {
+    name: "Joni Baez",
+    age: "32",
+    address: "123, Charming Avenue"
+  };
+  jest.spyOn(global, "fetch").mockImplementation(() =>
+    Promise.resolve({
+      json: () => Promise.resolve(fakeUser)
+    })
   );
 
-  getByText(container, "False").click();
-  expect(mockFalseButton).toBeCalledWith(mockQuestion, false);
+  // Use the asynchronous version of act to apply resolved promises
+  await act(async () => {
+    render(<Quiz />, container);
+  });
 
-  getByText(container, "True").click();
-  expect(mockFalseButton).toBeCalledWith(mockQuestion, false);
+  expect(container.querySelector("summary").textContent).toBe(fakeUser.name);
+  expect(container.querySelector("strong").textContent).toBe(fakeUser.age);
+  expect(container.textContent).toContain(fakeUser.address);
+
+  // remove the mock to ensure tests are completely isolated
+  global.fetch.mockRestore();
 });

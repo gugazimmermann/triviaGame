@@ -12,7 +12,7 @@ import {
 import { Loading, Question } from "../../components";
 import QuizResult from "./QuizResult";
 
-const Quiz = ({history}) => {
+const Quiz = ({ history }) => {
   const [state, dispatch] = useContext(QuestionsContext);
   const [currentQuestion, setCurrentQuestion] = useState();
   const [totalAnswered, setTotalAnswered] = useState();
@@ -53,7 +53,7 @@ const Quiz = ({history}) => {
 
   const onHandleReset = () => {
     dispatch({ type: RESET_QUESTIONS, payload: [] });
-    history.push(HOME)
+    history.push(HOME);
   };
 
   return (

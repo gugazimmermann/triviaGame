@@ -1,18 +1,27 @@
 import React from "react";
+import { render, unmountComponentAtNode } from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { render, getByTestId, fireEvent } from "@testing-library/react";
+import { act } from "react-dom/test-utils";
+
 import Home from "../pages/home/Home";
 
-const mockFalseButton = jest.fn();
+let container = null;
+beforeEach(() => {
+  container = document.createElement("div");
+  document.body.appendChild(container);
+});
 
-test("Test Render Home Page", () => {
-  const { container } = render(
-    <BrowserRouter>
-      <Home />
-    </BrowserRouter>
-  );
+afterEach(() => {
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
 
-  expect(container.querySelector("h1").textContent).toEqual("Welcome to the Trivia Challenge");
-  expect(getByTestId(container, "h2-1").textContent).toEqual("You will be presented with 10 True or False questions");
-  expect(getByTestId(container, "h2-2").textContent).toEqual("Can you score 100%?");
+it("renders Home with Welcome text, link to quiz and button to begin", () => {
+  act(() => {
+    render(<BrowserRouter><Home /></BrowserRouter>, container);
+  });
+  expect(container.querySelector("h1").textContent).toBe("Welcome to the Trivia Challenge");
+  expect(container.querySelector("[data-testid='link']").getAttribute("href")).toEqual("/quiz");
+  expect(container.querySelector("button").textContent).toBe("BEGIN");
 });

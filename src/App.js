@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import QuestionsContext from "./context/QuestionsStore";
 import { ENTRY_ROUTE, HOME, QUIZ } from "./constants";
 
-const Home = lazy(() => import('./pages/home/Home'));
-const Quiz = lazy(() => import('./pages/quiz/Quiz'));
-const NotFound = lazy(() => import('./pages/notfound/NotFound'));
+const Home = lazy(() => import("./pages/home/Home"));
+const Quiz = lazy(() => import("./pages/quiz/Quiz"));
+const NotFound = lazy(() => import("./pages/notfound/NotFound"));
 
 /**
  * Add the questions context to be used in the
