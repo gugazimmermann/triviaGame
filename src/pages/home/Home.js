@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 /**
  * A static home page fot the app, we can move the
@@ -18,7 +18,7 @@ const Home = () => {
         <button type="button">BEGIN</button>
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

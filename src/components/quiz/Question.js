@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const Question = ({ question, current, handleAnswer }) => {
   return (
@@ -25,7 +26,13 @@ const Question = ({ question, current, handleAnswer }) => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Question;
+Question.propTypes = {
+  question: PropTypes.object.isRequired,
+  current: PropTypes.number.isRequired,
+  handleAnswer: PropTypes.func.isRequired
+}
+
+export default Question

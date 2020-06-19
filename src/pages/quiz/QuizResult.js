@@ -1,5 +1,6 @@
-import React from "react";
-import { QuestionResult } from "../../components";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { QuestionResult } from '../../components'
 
 const QuizResult = ({ questionsList, handleReset }) => {
   const userScore = () => {
@@ -10,11 +11,11 @@ const QuizResult = ({ questionsList, handleReset }) => {
             ? ++c
             : c,
         0
-      );
-      const userTotalScore = correntAnswered + " / " + questionsList.length;
-      return userTotalScore;
+      )
+      const userTotalScore = correntAnswered + ' / ' + questionsList.length
+      return userTotalScore
     }
-  };
+  }
 
   return (
     <div className="container">
@@ -32,7 +33,12 @@ const QuizResult = ({ questionsList, handleReset }) => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default QuizResult;
+QuizResult.propTypes = {
+  questionsList: PropTypes.array.isRequired,
+  handleReset: PropTypes.func.isRequired
+}
+
+export default QuizResult

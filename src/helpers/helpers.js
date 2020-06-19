@@ -1,4 +1,4 @@
-import he from "he";
+import he from 'he'
 
 /**
  * Format the API response to be used in the app.
@@ -18,8 +18,8 @@ export const formatQuestions = (result) => {
     return {
       category: r.category,
       question: he.decode(r.question),
-      correct_answer: r.correct_answer === "True",
-      user_answer: null,
-    };
-  });
-};
+      correct_answer: r.correct_answer === 'True',
+      user_answer: null
+    }
+  })
+}

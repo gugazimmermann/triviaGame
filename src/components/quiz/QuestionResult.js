@@ -1,6 +1,7 @@
-import React from "react";
-import { ReactComponent as Correct } from "../images/correct.svg";
-import { ReactComponent as Incorrect } from "../images/incorrect.svg";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { ReactComponent as Correct } from '../images/correct.svg'
+import { ReactComponent as Incorrect } from '../images/incorrect.svg'
 
 const QuestionResult = ({ question }) => {
   return (
@@ -16,7 +17,11 @@ const QuestionResult = ({ question }) => {
         <div data-testid="question">{question.question}</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default QuestionResult;
+QuestionResult.propTypes = {
+  question: PropTypes.object.isRequired
+}
+
+export default QuestionResult
