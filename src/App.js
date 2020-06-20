@@ -1,5 +1,5 @@
-import React, { lazy, Suspense } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import React, { lazy } from 'react'
+import { Route, Switch } from 'react-router-dom'
 import QuestionsContext from './context/QuestionsStore'
 import { ENTRY_ROUTE, HOME, QUIZ } from './constants'
 
@@ -14,18 +14,14 @@ const NotFound = lazy(() => import('./pages/notfound/NotFound'))
  */
 function App () {
   return (
-    <Suspense fallback={<span>Loading...</span>}>
-      <BrowserRouter>
-        <QuestionsContext>
-          <Switch>
-            <Route exact path={ENTRY_ROUTE} component={Home} />
-            <Route exact path={HOME} component={Home} />
-            <Route exact path={QUIZ} component={Quiz} />
-            <Route component={NotFound} />
-          </Switch>
-        </QuestionsContext>
-      </BrowserRouter>
-    </Suspense>
+    <QuestionsContext>
+      <Switch>
+        <Route exact path={ENTRY_ROUTE} component={Home} />
+        <Route exact path={HOME} component={Home} />
+        <Route exact path={QUIZ} component={Quiz} />
+        <Route component={NotFound} />
+      </Switch>
+    </QuestionsContext>
   )
 }
 

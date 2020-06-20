@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
  * A simple error page
  */
 const NotFound = () => {
-  console.log('error')
   return (
     <div className="container">
       <h1>Trivia Challenge</h1>

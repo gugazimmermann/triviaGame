@@ -1,3 +1,5 @@
 {
-    "setupFiles": ["<rootDir>/src/setupTests.js"]
-   }
+  "setupFiles": ["<rootDir>/src/setupTests.js"],
+  "coverageProvider": "v8",
+  "testEnvironment": "jest-environment-jsdom-sixteen"
+}
