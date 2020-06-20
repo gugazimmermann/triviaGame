@@ -3,7 +3,7 @@ import he from 'he'
 /**
  * Format the API response to be used in the app.
  * Here we use the library he (https://github.com/mathiasbynens/he)
- * just to decodes the HTML entities of trhe questions .
+ * just to decodes the questions's HTML entities.
  *
  * The result is a Array of Objects like this:
  * [{

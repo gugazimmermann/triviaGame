@@ -9,7 +9,9 @@ afterEach(() => {
 })
 
 /**
- * test the routes with a real call too the API
+ * test the routes with a real call too the API.
+ * this can make the test fail if the response
+ * take to long.
  */
 test('render app home and quiz', async () => {
   const { getByRole, getByText } = render(

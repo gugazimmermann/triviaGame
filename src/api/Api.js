@@ -7,5 +7,5 @@ export const fetchQuestions = () => {
   return fetch(process.env.REACT_APP_QUIZ_API_URL)
     .then((res) => res.json())
     .then((result) => result)
-    .catch((err) => err);
-};
+    .catch((err) => err)
+}

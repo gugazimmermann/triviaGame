@@ -1,25 +1,29 @@
-import React, { createContext, useReducer } from "react";
-import QuestionsReducer from "./QuestionsReducer";
+import React, { createContext, useReducer } from 'react'
+import PropTypes from 'prop-types'
+import QuestionsReducer from './QuestionsReducer'
 
 /**
- * The store to keep the user state.
+ * The store to keep the questions state.
  */
-
 const initialState = {
   questions: [],
-  error: null,
-};
+  error: null
+}
 
-export const QuestionsContext = createContext();
+export const QuestionsContext = createContext()
 
 const QuestionsStore = ({ children }) => {
-  const [state, dispatch] = useReducer(QuestionsReducer, initialState);
+  const [state, dispatch] = useReducer(QuestionsReducer, initialState)
 
   return (
     <QuestionsContext.Provider value={[state, dispatch]}>
       {children}
     </QuestionsContext.Provider>
-  );
-};
+  )
+}
 
-export default QuestionsStore;
+QuestionsStore.propTypes = {
+  children: PropTypes.node.isRequired
+}
+
+export default QuestionsStore

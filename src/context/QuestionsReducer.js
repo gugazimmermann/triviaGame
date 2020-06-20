@@ -6,7 +6,7 @@ import {
 } from '../constants'
 
 /**
- * The reducer used with the store to manipulate de app state
+ * The reducer used with the store to manipulate de questions state
  */
 const QuestionsReducer = (state, action) => {
   switch (action.type) {

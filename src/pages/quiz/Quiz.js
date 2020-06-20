@@ -18,11 +18,16 @@ const Quiz = ({ history }) => {
   const [currentQuestion, setCurrentQuestion] = useState()
   const [totalAnswered, setTotalAnswered] = useState()
 
+  // run just one time
   useEffect(() => {
     fetchQuestionsList()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  /**
+ * run when the questions state change
+ * set the total of questions answered and the current question
+ */
   useEffect(() => {
     if (state.questions.length > 0) {
       const totalAnswered = state.questions.reduce(
@@ -34,6 +39,7 @@ const Quiz = ({ history }) => {
     }
   }, [state.questions])
 
+  // call the api and send the questions to the store
   async function fetchQuestionsList () {
     const getQuestions = await fetchQuestions()
     if (
@@ -48,10 +54,12 @@ const Quiz = ({ history }) => {
     }
   }
 
+  // send the user answer to the store
   const onHandleAnswer = (question, answer) => {
     dispatch({ type: ANSWER_QUESTION, payload: { question, answer } })
   }
 
+  // reset the questions and send the user to the home page
   const onHandleReset = () => {
     dispatch({ type: RESET_QUESTIONS, payload: [] })
     history.push(HOME)

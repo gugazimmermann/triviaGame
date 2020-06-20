@@ -8,9 +8,7 @@ const Quiz = lazy(() => import('./pages/quiz/Quiz'))
 const NotFound = lazy(() => import('./pages/notfound/NotFound'))
 
 /**
- * Add the questions context to be used in the
- * Quiz Routes, AppRoutes don't need it now, but
- * can in the future use some Auth.
+ * Add the questions context to be used in the Quiz Routes
  */
 function App () {
   return (

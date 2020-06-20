@@ -9,6 +9,9 @@ import * as serviceWorker from './serviceWorker'
  * just the entry point. In the future we can
  * change the design or add more stuff to the
  * app easier from here.
+ *
+ * Suspense and BrowserRouter here to be able to test App.js
+ *
  */
 ReactDOM.render(
   <React.StrictMode>

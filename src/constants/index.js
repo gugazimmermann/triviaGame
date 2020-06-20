@@ -1,6 +1,5 @@
 /**
- * keeps constants in one place to avoid overwriting
- * them in other files.
+ * keeps constants in one place to avoid overwriting.
  */
 
 // ROUTES

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { QuestionResult } from '../../components'
 
 const QuizResult = ({ questionsList, handleReset }) => {
+
+  // see the user correct answers
   const userScore = () => {
     if (questionsList) {
       const correntAnswered = questionsList.reduce(
